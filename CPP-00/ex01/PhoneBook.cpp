@@ -6,12 +6,14 @@
 /*   By: vbengea < vbengea@student.42madrid.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:44:42 by vbengea           #+#    #+#             */
-/*   Updated: 2025/03/17 19:52:40 by vbengea          ###   ########.fr       */
+/*   Updated: 2025/03/17 20:44:22 by vbengea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iomanip>
+
+int	PhoneBook::_oldestIndex = 0;
 
 std::string PhoneBook::truncateString(std::string str) {
 	if (str.length() > 10) {
@@ -40,33 +42,58 @@ void PhoneBook::addContact(void) {
 	std::string phoneNumber;
 	std::string darkestSecret;
 
-	std::cout << "Enter first name: ";
-	std::getline(std::cin, firstName);
-	std::cout << "Enter last name: ";
-	std::getline(std::cin, lastName);
-	std::cout << "Enter nickname: ";
-	std::getline(std::cin, nickName);
-	std::cout << "Enter phone number: ";
-	std::getline(std::cin, phoneNumber);
-	std::cout << "Enter darkest secret: ";
-	std::getline(std::cin, darkestSecret);
+	do {
+		std::cout << "Enter first name: ";
+		std::getline(std::cin, firstName);
+	} while (firstName.empty());
+
+	do {
+		std::cout << "Enter last name: ";
+		std::getline(std::cin, lastName);
+	} while (lastName.empty());
+
+	do {
+		std::cout << "Enter nickname: ";
+		std::getline(std::cin, nickName);
+	} while (nickName.empty());
+
+	do {
+		std::cout << "Enter phone number: ";
+		std::getline(std::cin, phoneNumber);
+	} while (phoneNumber.empty());
+
+	do {
+		std::cout << "Enter darkest secret: ";
+		std::getline(std::cin, darkestSecret);
+	} while (darkestSecret.empty());
 
 	firstName = truncateString(firstName);
 	lastName = truncateString(lastName);
 	nickName = truncateString(nickName);
 	darkestSecret = truncateString(darkestSecret);
 
+
+	int index = -1;
 	for (int i = 0; i < 8; i++) {
 		if (this->_contacts[i].getIndex().empty()) {
-			this->_contacts[i].setFirstName(firstName);
-			this->_contacts[i].setLastName(lastName);
-			this->_contacts[i].setNickName(nickName);
-			this->_contacts[i].setIndex(intToString(i));
-			this->_contacts[i].setPhoneNumber(phoneNumber);
-			this->_contacts[i].setDarkestSecret(darkestSecret);
+			index = i;
 			break ;
 		}
 	}
+
+	if (index == -1) {
+		index = _oldestIndex;
+		_oldestIndex = (index + 1) % 8;
+	}
+
+
+	this->_contacts[index].getIndex();
+	this->_contacts[index].setFirstName(firstName);
+	this->_contacts[index].setLastName(lastName);
+	this->_contacts[index].setNickName(nickName);
+	this->_contacts[index].setIndex(intToString(index));
+	this->_contacts[index].setPhoneNumber(phoneNumber);
+	this->_contacts[index].setDarkestSecret(darkestSecret);
 }
 
 std::string PhoneBook::intToString(int num) {

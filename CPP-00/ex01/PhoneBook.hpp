@@ -6,7 +6,7 @@
 /*   By: vbengea < vbengea@student.42madrid.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:38:40 by vbengea           #+#    #+#             */
-/*   Updated: 2025/03/17 19:43:27 by vbengea          ###   ########.fr       */
+/*   Updated: 2025/03/17 20:41:59 by vbengea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class PhoneBook {
 	
 	private:
 		Contact	_contacts[8];
+		static int _oldestIndex;
 		std::string truncateString(std::string str);
 		std::string intToString(int i);
 };
