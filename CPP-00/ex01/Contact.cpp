@@ -6,7 +6,7 @@
 /*   By: vbengea < vbengea@student.42madrid.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 10:37:55 by vbengea           #+#    #+#             */
-/*   Updated: 2025/03/17 11:06:47 by vbengea          ###   ########.fr       */
+/*   Updated: 2025/03/17 11:29:52 by vbengea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Contact::Contact(void) {
 	this->_nickName = "";
 	this->_index = "";
 	this->_darkestSecret = "";
+	this->_phoneNumber = "";
 }
 
 Contact::~Contact(void) {
@@ -28,6 +29,7 @@ Contact::~Contact(void) {
 	this->_nickName = "";
 	this->_index = "";
 	this->_darkestSecret = "";
+	this->_phoneNumber = "";
 }
 
 void Contact::setFirstName(std::string firstName) {
@@ -50,6 +52,15 @@ void Contact::setIndex(std::string index)
 void Contact::setDarkestSecret(std::string darkestSecret)
 {
 	this->_darkestSecret = darkestSecret;
+}
+
+void Contact::setPhoneNumber(std::string phoneNumber)
+{
+	this->_phoneNumber = phoneNumber;
+}
+
+std::string Contact::getPhoneNumber(void) const {
+	return this->_phoneNumber;
 }
 
 std::string Contact::getFirstName(void) const {
