@@ -6,7 +6,7 @@
 /*   By: vbengea < vbengea@student.42madrid.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 10:37:55 by vbengea           #+#    #+#             */
-/*   Updated: 2025/03/17 11:29:52 by vbengea          ###   ########.fr       */
+/*   Updated: 2025/03/18 11:29:59 by vbengea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,10 @@
 
 Contact::Contact(void) {
 	std::cout << "Contact created" << std::endl;
-	this->_firstName = "";
-	this->_lastName = "";
-	this->_nickName = "";
-	this->_index = "";
-	this->_darkestSecret = "";
-	this->_phoneNumber = "";
 }
 
 Contact::~Contact(void) {
 	std::cout << "Contact destroyed" << std::endl;
-	this->_firstName = "";
-	this->_lastName = "";
-	this->_nickName = "";
-	this->_index = "";
-	this->_darkestSecret = "";
-	this->_phoneNumber = "";
 }
 
 void Contact::setFirstName(std::string firstName) {
