@@ -18,6 +18,17 @@ class Harl
 		void info(void);
 		void warning(void);
 		void error(void);
+
+		typedef void (Harl::*HarlFunc)(void);
+		enum Level
+		{
+			DEBUG,
+			INFO,
+			WARNING,
+			ERROR,
+			UNKNOWN
+		};
+		Level getLevel(std::string level);
 };
 
 #endif // HARL_HPP
