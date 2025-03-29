@@ -8,33 +8,7 @@ Harl::~Harl() {
 	// Destructor implementation
 }
 
-Harl::Level Harl::getLevel(std::string level) {
-	if (level == "DEBUG") {
-		return DEBUG;
-	}
-	else if (level == "INFO") {
-		return INFO;
-	}
-	else if (level == "WARNING") {
-		return (WARNING);
-	}
-	else if (level == "ERROR") {
-		return (ERROR);
-	}
-	else {
-		return UNKNOWN;
-	}
-}
-
 void Harl::complain(std::string level) {
-	typedef void (Harl::*HarlFunction)();
-
-	HarlFunction functions[] = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error
-	};
 
 	std::string levels[] = {
 		"DEBUG", 
@@ -43,18 +17,23 @@ void Harl::complain(std::string level) {
 		"ERROR"
 	};
 
-	switch (getLevel(level)) {
-		case DEBUG:
-			(this->*functions[0])();
+	int i = 0;
+	while (i < 4 && levels[i] != level) {
+		i++;
+	}
+
+	switch (i) {
+		case 0:
+			this->debug();
 			break;
-		case INFO:
-			(this->*functions[1])();
+		case 1:
+			this->info();
 			break;
-		case WARNING:
-			(this->*functions[2])();
+		case 2:
+			this->warning();
 			break;
-		case ERROR:
-			(this->*functions[3])();
+		case 3:
+			this->error();
 			break;
 		default:
 			std::cout << "Unknown level" << std::endl;
